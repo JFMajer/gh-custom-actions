@@ -12,4 +12,4 @@ runs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
-      shell: bash
+      shell: bash # shell key required for composite actions if run is specified
