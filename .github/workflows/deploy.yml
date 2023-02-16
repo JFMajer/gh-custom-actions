@@ -19,7 +19,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load and cache dependencies using custom action
-        uses: ./.github/actions/cached-deps # path relative to roo
+        uses: ./.github/actions/cached-deps # path relative to repo
       - name: Test code
         id: run-tests
         run: npm run test
@@ -36,7 +36,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load and cache dependencies using custom action
-        uses: ./.github/actions/cached-deps # path relative to roo
+        uses: ./.github/actions/cached-deps # path relative to repo
       - name: Build website
         run: npm run build
       - name: Upload artifacts
