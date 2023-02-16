@@ -1,15 +1,21 @@
 name: Get and Cache Dependencies
 description: Get and cache dependencies for a Node.js project
+inputs:
+  caching:
+    description: 'Set false to disable caching'
+    required: false
+    default: 'true'
 runs:
   using: 'composite'
   steps:
     - name: Cache dependencies
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v3
       with:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching == 'false'
       run: npm ci
       shell: bash # shell key required for composite actions if run is specified
