@@ -24,7 +24,7 @@ jobs:
         id: cache-in-test
         uses: ./.github/actions/cached-deps # path relative to repo
       - name: output information
-        run: echo "Cache used? ${{ steps.cache-in-test.outputs.cache-hit }}"
+        run: echo "Cache used? ${{ steps.cache-in-test.outputs.cache-used }}"
       - name: Test code
         id: run-tests
         run: npm run test
