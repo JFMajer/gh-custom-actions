@@ -67,6 +67,7 @@ jobs:
         run: |
           pwd 
           ls
+          ls -la dist/
       - name: Deploy site
         run: echo "Deploying..."
   information:
