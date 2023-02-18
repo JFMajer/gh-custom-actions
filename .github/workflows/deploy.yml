@@ -21,7 +21,10 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load and cache dependencies using custom action
+        id: cache-in-test
         uses: ./.github/actions/cached-deps # path relative to repo
+      - name: output information
+        run: echo "Cache used? ${{ steps.cache-in-test.outputs.cache-hit }}"
       - name: Test code
         id: run-tests
         run: npm run test

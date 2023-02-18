@@ -5,6 +5,10 @@ inputs:
     description: 'Set false to disable caching'
     required: false
     default: 'true'
+outputs:
+  cache-hit:
+    description: 'True if cache was hit'
+    value: ${{ steps.install.outputs.cache-hit }}
 runs:
   using: 'composite'
   steps:
@@ -16,6 +20,9 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching == 'false'
-      run: npm ci
+      run:  | 
+        npm ci
+        echo "cache='${{ inputs.caching }}'}}" >> $GITHUB_OUTPUT
       shell: bash # shell key required for composite actions if run is specified
