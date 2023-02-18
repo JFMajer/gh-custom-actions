@@ -92,4 +92,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output website URL
-        run: echo "${{ steps.deploy.outputs.website-url }}"
+        run: echo "${{ needs.deploy.outputs.website-url }}"
