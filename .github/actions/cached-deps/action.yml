@@ -8,7 +8,7 @@ inputs:
 outputs:
   cache-used:
     description: 'True if cache was hit'
-    value: 'testting output'
+    value: ${{ steps.install.outputs.cache-used }}
 runs:
   using: 'composite'
   steps:
