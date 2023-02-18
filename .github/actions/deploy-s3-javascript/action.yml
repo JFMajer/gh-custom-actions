@@ -12,6 +12,10 @@ inputs:
     description: 'Folder containing the files to deploy'
     required: false
     default: 'dist'
+outputs:
+  website-url:
+    description: 'URL of the deployed site'
+
 
 runs:
   using: 'node16'

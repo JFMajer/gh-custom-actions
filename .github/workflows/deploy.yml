@@ -77,8 +77,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION }}
       - name: Deploy site
+        id: deploy
         uses: ./.github/actions/deploy-s3-javascript # path relative to repo
         with:
           bucket-name: ${{ secrets.BUCKET_NAME }}
           region: ${{ vars.AWS_REGION }}
           dist-folder: ./dist
+      - name: output url
+        run: echo "${{ steps.deploy.outputs.website-url }}"
