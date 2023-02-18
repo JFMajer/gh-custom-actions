@@ -8,7 +8,7 @@ inputs:
 outputs:
   cache-used:
     description: 'True if cache was hit'
-    value: ${{ steps.install.outputs.cache-used }}
+    value: ${{ steps.install.outputs.cache }}
 runs:
   using: 'composite'
   steps:
@@ -24,5 +24,5 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching == 'false'
       run:  | 
         npm ci
-        echo "::set-output name=cache-used::false"
+        echo "::set-output name=cache::false"
       shell: bash # shell key required for composite actions if run is specified
