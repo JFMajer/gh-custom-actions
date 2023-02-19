@@ -86,10 +86,10 @@ jobs:
           bucket-name: ${{ vars.BUCKET_NAME }}
           region: ${{ vars.AWS_REGION }}
           dist-folder: ./dist
-  output_summary:
-    if: ${{ !failure() }}
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output website URL
-        run: echo "${{ needs.deploy.outputs.website-url }}"
+  # output_summary:
+  #   if: ${{ !failure() }}
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Output website URL
+  #       run: echo "${{ needs.deploy.outputs.website-url }}"
