@@ -81,7 +81,8 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
       - name: Deploy site
         id: deploy
-        uses: ./.github/actions/deploy-s3-javascript # path relative to repo
+        # uses: ./.github/actions/deploy-s3-javascript # path relative to repo
+        uses: ./.github/actions/deploy-s3-docker # path relative to repo
         with:
           bucket-name: ${{ vars.BUCKET_NAME }}
           region: ${{ vars.AWS_REGION }}
