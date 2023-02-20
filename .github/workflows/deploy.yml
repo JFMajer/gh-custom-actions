@@ -2,9 +2,10 @@ name: Deployment
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - '**/README.md'
-      - README.md
+    paths:
+      - '**'
+      - '!**/README.md'
+      - '!README.md'
     branches:
       - main
 
